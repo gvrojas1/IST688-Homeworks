@@ -67,7 +67,7 @@ if llm_choice == "OpenAI":
 elif llm_choice == "Claude":
     anthropic_api_key = st.secrets.get("ANTHROPIC_API_KEY", "")
     client = Anthropic(api_key=anthropic_api_key)
-    model = "claude-opus-4-1" if use_advanced_model else "claude-3-5-haiku-latest"
+    model = "claude-sonnet-4-6" if use_advanced_model else "claude-haiku-4-5-20251001"
     key_is_valid = bool(anthropic_api_key)  # just check it exists; real validation happens on first real call
 
 # Main logic 
