@@ -57,7 +57,10 @@ def update_summary(llm_choice, openai_client, claude_client, previous_summary, n
         return response.choices[0].message.content
     else:
         response = claude_client.messages.create(model="claude-opus-5", max_tokens=300, messages=messages)
-        return response.content[0].text
+        for block in response.content:
+            if block.type == "text":
+                return block.text
+        return previous_summary
 
 def call_openai(client, api_messages):
     response = client.chat.completions.create(
@@ -77,7 +80,10 @@ def call_claude(client, api_messages):
         system=system_msg,
         messages=convo_msgs,
     )
-    return response.content[0].text
+    for block in response.content:
+        if block.type == "text":
+            return block.text
+    return ""
 
 #Page set up 
 # Show title and description.
