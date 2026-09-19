@@ -89,7 +89,7 @@ def create_hw4_collection():
  
     return collection
 
-def get_relevant_context(query, n_results=3):
+def get_relevant_context(query, n_results=5):
     """Embeds the query, retrieves the top-n matching documents from the
     collection, and returns a combined context string plus the source filenames."""
     response = client.embeddings.create(
@@ -164,7 +164,7 @@ if prompt:
         st.write(prompt)
  
     # RAG retrieval for this turn 
-    context_str, source_ids = get_relevant_context(prompt, n_results=3)
+    context_str, source_ids = get_relevant_context(prompt, n_results=5)
  
     api_messages = build_buffer(st.session_state.messages, num_turns=5)
     augmented_messages = api_messages + [
