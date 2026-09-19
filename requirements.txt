@@ -4,3 +4,5 @@ anthropic
 pymupdf 
 requests
 beautifulsoup4
+chromadb
+pysqlite3-binary 
